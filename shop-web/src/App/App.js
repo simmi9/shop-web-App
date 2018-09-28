@@ -1,8 +1,24 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import HttpService from '../services/http-service';
+
+const http = new HttpService();
 
 class App extends Component {
+constructor(props)
+  {  super(props);
+     //http.getProducts();
+     this.loadData=this.loadData.bind(this);
+     this.loadData();
+  }
+
+   //inside the promise
+    loadData=()=>{
+                  http.getProducts().then(products=> { console.log(products);
+                                                      }, err=>{     }
+                                          ); 
+                }
   render() {
     return (
       <div className="App">
